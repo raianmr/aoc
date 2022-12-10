@@ -1,6 +1,6 @@
 export type Data = {
-  example: string
-  custom: string
+  readonly example: string
+  readonly custom: string
 }
 
 export const day01: Data = {
