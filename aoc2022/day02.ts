@@ -1,15 +1,23 @@
 import * as data from "./data.ts"
 import * as utils from "./utils.ts"
 
-const parse = (data: string) => data.split("\n").map(data => data.split(" "))
+utils.log(() => solveP1(data.day02.custom))
+utils.log(() => solveP2(data.day02.custom))
+
+function parse(data: string): string[][] {
+  return data.split("\n").map(data => data.split(" "))
+}
+
+// because js, being the high iq language that it is, hoists variables, but
+// without actually making them usable, i cannot list declarations as they are
+// needed. the thought process during writing the code simply cannot be
+// documented here.
 
 enum Move {
   ROCK = 1,
   PAPER = 2,
   SCISSOR = 3,
 }
-
-// part 1
 
 const P1Scores: {
   [opponent: string]: { [player: string]: number }
@@ -27,16 +35,13 @@ const P1Moves: {
   Z: Move.SCISSOR,
 }
 
-const solveP1 = (data: string) =>
-  utils.sum(
+function solveP1(data: string): number {
+  return utils.sum(
     parse(data).map(
       ([opponent, player]) => P1Scores[opponent][player] + P1Moves[player]
     )
   )
-
-utils.log(() => solveP1(data.day02.custom))
-
-// part 2
+}
 
 const P2Moves: {
   [opponent: string]: { [move: string]: number }
@@ -54,11 +59,10 @@ const P2Scores: {
   Z: 6,
 }
 
-const solveP2 = (data: string) =>
-  utils.sum(
+function solveP2(data: string): number {
+  return utils.sum(
     parse(data).map(
       ([opponent, outcome]) => P2Moves[opponent][outcome] + P2Scores[outcome]
     )
   )
-
-utils.log(() => solveP2(data.day02.custom))
+}
