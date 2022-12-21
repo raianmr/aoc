@@ -8,11 +8,11 @@ import * as utils from "./utils.ts"
 // hoist and make usable arrow functions at the same time. so i feel compelled
 // to write all reusable functions in the traditional, verbose manner. and this
 // leads me to my next realization:
-// 2. top level functions, or functions that are meant to be reused, should
-// have their return types spelled out (this can and probably should be done
-// after writing the body). i had developed this weird style of storing **all**
-// functions as consts watching all these youtubes but at this point this just
-// seems stupid and hurtful to readability.
+// 2. prolly the only thing i miss from C#: top level functions or functions
+// that are meant to be reused should have their return types spelled out. this
+// can and probably should be done after writing the body). i had developed
+// this weird style of storing **all** functions as consts watching all these
+// youtubers but at this point this just seems dumb and bad for readability
 
 utils.log(() => solveP1(data.day03.custom))
 utils.log(() => solveP2(data.day03.custom))

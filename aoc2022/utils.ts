@@ -17,13 +17,15 @@ export function log<T>(clos: () => T): void {
   try {
     console.log(clos())
   } catch (error) {
-    if (error instanceof TypeError) {
-      // ts cant catch all bugs, and neither can go. but go's explicit error
-      // handling makes sure i dont the dumb shit ive done here. handling
-      // errors retrospectively is a huge pain imo, and explains why it's so
-      // easy to write complete and utter garbage in python, js, c++ and so on
-      console.log(`parsing failed probably`)
-    }
+    // ts cant catch all bugs, and neither can go. but go's explicit error
+    // handling makes sure i dont do the dumb shit ive done here. handling
+    // errors retrospectively is a huge pain imo, and explains why it's so easy
+    // to write complete and utter garbage in python, js, c++ and so on. go
+    // actually doesnt miss out on anything by making these things explicit,
+    // you can ignore errors using `discards` all you want. the reason people
+    // complain, i assume, is that this syntax reminds them to clean after
+    // themselves and uncovers issues that would've otherwise gone unnoticed
+    if (error instanceof TypeError) console.log(`parsing failed (probably)`)
 
     console.log(error.stack)
   }
