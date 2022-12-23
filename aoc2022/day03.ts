@@ -41,8 +41,5 @@ function findPriority(common: string): number {
 }
 
 function toHalves(data: string): string[] {
-  return [
-    data.slice(0, data.length / 2),
-    data.slice(data.length / 2, data.length),
-  ]
+  return utils.group(data, data.length / 2)
 }

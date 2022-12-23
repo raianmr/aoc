@@ -8,8 +8,14 @@ export function sum(nums: number[]): number {
 // writing generic functions that work on both these types. im sure there's
 // some ugly ts type system hack to achieve this, but im neither willing nor
 // capable enough to pull that off.
+// EDIT: ok i was wrong about everything i just said
 
-export function group<T>(a: T[], n: number): T[][] {
+type Sliceable<T> = {
+  length: number
+  slice(start?: number, end?: number): T
+}
+
+export function group<T extends Sliceable<T>>(a: T, n: number): T[] {
   return a.length == 0 ? [] : [a.slice(0, n), ...group(a.slice(n), n)]
 }
 
