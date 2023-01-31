@@ -8,10 +8,12 @@ function parse(data: string) {
   return data.split("\n")
 }
 
+// TODO
 function solveP1(data: string) {
   return parse(data)
 }
 
+// TODO
 function solveP2(data: string) {
   return parse(data)
 }
